@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/Hero";
 import { StoryTeaser } from "@/components/sections/StoryTeaser";
 import { PatskhaHighlight } from "@/components/sections/PatskhaHighlight";
 import { NavPrompts } from "@/components/sections/NavPrompts";
+import { KantsiScrollAccent } from "@/components/decorative/KantsiScrollAccent";
 
 export default async function HomePage({
   params,
@@ -14,6 +15,7 @@ export default async function HomePage({
 
   return (
     <>
+      <KantsiScrollAccent />
       <Hero />
       <StoryTeaser />
       <PatskhaHighlight />

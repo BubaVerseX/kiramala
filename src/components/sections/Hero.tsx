@@ -1,5 +1,8 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { CarpetBackground } from "@/components/decorative/CarpetBackground";
+import { VineBorder } from "@/components/decorative/VineBorder";
+import emblemSrc from "../../../public/logo/emblem.png";
 
 export function Hero() {
   const t = useTranslations("home.hero");
@@ -17,6 +20,14 @@ export function Hero() {
         A real riverside/venue photograph or looping video would sit
         here as a background layer beneath the gradient above.
       */}
+
+      {/* faded emblem watermark behind the headline — logo mark only, no wordmark */}
+      <Image
+        src={emblemSrc}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 left-1/2 h-[130vh] w-[130vh] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.08]"
+      />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center px-6 text-center">
         <span className="font-body text-xs font-semibold tracking-[0.4em] text-gold-400 uppercase">
@@ -47,6 +58,8 @@ export function Hero() {
           <path d="M12 4v15M6 13l6 6 6-6" />
         </svg>
       </div>
+
+      <VineBorder tone="gold" className="absolute inset-x-0 bottom-0 opacity-60" />
     </section>
   );
 }

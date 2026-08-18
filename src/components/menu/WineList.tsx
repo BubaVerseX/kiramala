@@ -13,7 +13,7 @@ export function WineList({ id }: { id?: string }) {
     <ScrollReveal
       as="section"
       id={id}
-      className="scroll-mt-24 border-t border-wine-900/10 py-16"
+      className="scroll-mt-24 py-16"
     >
       <SectionHeading title={t("categories.wine")} />
       <p className="mx-auto mt-6 max-w-xl text-center font-body text-sm leading-relaxed text-ink-700 sm:text-base">

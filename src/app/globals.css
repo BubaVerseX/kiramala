@@ -130,6 +130,10 @@ h4 {
   animation: scroll-bounce 2.2s ease-in-out infinite;
 }
 
+.kantsi-fill-rect {
+  transition: y 0.15s linear;
+}
+
 @keyframes scroll-bounce {
   0%,
   100% {
@@ -154,6 +158,10 @@ h4 {
   .scroll-cue-bounce {
     animation: none;
   }
+
+  .kantsi-fill-rect {
+    transition: none;
+  }
 }
 
 /*
@@ -166,6 +174,25 @@ h4 {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23862233' stroke-width='1'%3E%3Cpath d='M60 4 L116 60 L60 116 L4 60 Z'/%3E%3Cpath d='M60 24 L96 60 L60 96 L24 60 Z'/%3E%3Ccircle cx='60' cy='60' r='6'/%3E%3Cpath d='M60 4 L60 24 M60 96 L60 116 M4 60 L24 60 M96 60 L116 60'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 120px 120px;
+}
+
+/*
+ * Hand-authored grapevine running border — a tiled SVG strip of thin
+ * vine line, small leaves and grape clusters, used as a horizontal
+ * frame edge (Hero top/bottom rule, Venue gallery frame).
+ */
+.vine-border-gold {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='28' viewBox='0 0 90 28'%3E%3Cg fill='none' stroke='%23c39c52' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M0 14 Q22.5 2 45 14 T90 14'/%3E%3Cpath d='M20 12c-2-4-1-7 2-8.5'/%3E%3Ccircle cx='23' cy='18' r='1.6' fill='%23c39c52' stroke='none'/%3E%3Ccircle cx='26.4' cy='19.6' r='1.6' fill='%23c39c52' stroke='none'/%3E%3Ccircle cx='23' cy='21.6' r='1.6' fill='%23c39c52' stroke='none'/%3E%3Cpath d='M65 12c3-5 7-5 9-1.5'/%3E%3Cpath d='M68 8.5c1-1.6 3-1.6 4-0.3'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 90px 28px;
+}
+
+.vine-border-wine {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='28' viewBox='0 0 90 28'%3E%3Cg fill='none' stroke='%23862233' stroke-width='1.1' stroke-linecap='round'%3E%3Cpath d='M0 14 Q22.5 2 45 14 T90 14'/%3E%3Cpath d='M20 12c-2-4-1-7 2-8.5'/%3E%3Ccircle cx='23' cy='18' r='1.6' fill='%23862233' stroke='none'/%3E%3Ccircle cx='26.4' cy='19.6' r='1.6' fill='%23862233' stroke='none'/%3E%3Ccircle cx='23' cy='21.6' r='1.6' fill='%23862233' stroke='none'/%3E%3Cpath d='M65 12c3-5 7-5 9-1.5'/%3E%3Cpath d='M68 8.5c1-1.6 3-1.6 4-0.3'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 90px 28px;
 }
 
 .carpet-texture-gold {

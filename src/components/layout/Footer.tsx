@@ -11,11 +11,8 @@ export function Footer() {
     <footer className="border-t border-gold-500/20 bg-wine-950 text-parchment-100">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-6 text-center">
-          <LogoFull tone="parchment" />
+          <LogoFull className="h-24 sm:h-28" />
           <VineDivider tone="gold" className="opacity-70" />
-          <p className="font-heading text-sm italic text-parchment-100/80">
-            {t("footer.tagline")}
-          </p>
 
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
             <Link href="/" className="text-parchment-100/80 hover:text-gold-300">

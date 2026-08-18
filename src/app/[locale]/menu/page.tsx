@@ -5,6 +5,7 @@ import { MenuCategorySection } from "@/components/menu/MenuCategorySection";
 import { WineList } from "@/components/menu/WineList";
 import { CategoryQuickNav } from "@/components/menu/CategoryQuickNav";
 import { CarpetBackground } from "@/components/decorative/CarpetBackground";
+import { QvevriDivider } from "@/components/decorative/QvevriDivider";
 
 export async function generateMetadata({
   params,
@@ -42,12 +43,16 @@ export default async function MenuPage({
       <div className="mx-auto max-w-5xl px-4 pt-6 sm:px-6 lg:px-8">
         <CategoryQuickNav />
 
-        <div className="divide-y divide-wine-900/10">
-          {menuCategories.map((category) => (
-            <MenuCategorySection key={category.id} category={category} id={category.id} />
+        <div>
+          {menuCategories.map((category, index) => (
+            <div key={category.id}>
+              {index > 0 && <QvevriDivider className="py-2" />}
+              <MenuCategorySection category={category} id={category.id} />
+            </div>
           ))}
         </div>
 
+        <QvevriDivider className="py-2" />
         <WineList id="wine" />
       </div>
     </>

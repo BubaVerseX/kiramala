@@ -54,8 +54,10 @@ export default async function ContactPage({
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <div>
             <dl className="space-y-8">
+              {/* PLACEHOLDER — phone and address are not real values yet. */}
               <InfoRow label={t("phoneLabel")} value={t("phone")} />
               <InfoRow label={t("addressLabel")} value={t("address")} />
+              {/* PLACEHOLDER — 12:00–23:00 daily is a stand-in; confirm real hours before launch. */}
               <InfoRow label={t("hoursLabel")} value={t("hours")} />
             </dl>
 

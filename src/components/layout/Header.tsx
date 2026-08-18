@@ -23,8 +23,8 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-wine-900/10 bg-parchment-50/90 backdrop-blur supports-[backdrop-filter]:bg-parchment-50/75">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center" aria-label="Kiramala">
-          <LogoIcon className="h-9 w-9 md:hidden" />
-          <LogoFull className="hidden md:flex" />
+          <LogoIcon className="h-11 w-11 md:hidden" />
+          <LogoFull className="hidden h-16 md:block" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label={t("languageLabel")}>
