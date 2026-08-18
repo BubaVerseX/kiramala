@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/*
+ * KIRAMALA brand theme — final palette (not a placeholder).
+ * Deep wine-red + aged gold as primary, parchment/bone for reading
+ * surfaces, vine-green as a restrained third accent.
+ */
+:root {
+  --color-wine-950: #2a0a11;
+  --color-wine-900: #3a0f18;
+  --color-wine-800: #521521;
+  --color-wine-700: #6c1b2a;
+  --color-wine-600: #862233;
+  --color-wine-500: #a12c3f;
+  --color-wine-400: #b95a68;
+
+  --color-gold-900: #4a3714;
+  --color-gold-800: #6b4f1c;
+  --color-gold-700: #8c6825;
+  --color-gold-600: #a9813a;
+  --color-gold-500: #c39c52;
+  --color-gold-400: #d3b672;
+  --color-gold-300: #e2cd9b;
+  --color-gold-200: #eeddb8;
+
+  --color-parchment-50: #fbf8f1;
+  --color-parchment-100: #f5eddb;
+  --color-parchment-200: #ecdfc0;
+  --color-parchment-300: #ddcda3;
+
+  --color-vine-900: #223318;
+  --color-vine-700: #38501f;
+  --color-vine-600: #4a6329;
+  --color-vine-500: #5e7a3a;
+  --color-vine-400: #7d9459;
+
+  --color-ink-900: #221410;
+  --color-ink-700: #3a241d;
+  --color-ink-500: #5c453b;
+
+  --background: var(--color-parchment-50);
+  --foreground: var(--color-ink-900);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-wine-950: var(--color-wine-950);
+  --color-wine-900: var(--color-wine-900);
+  --color-wine-800: var(--color-wine-800);
+  --color-wine-700: var(--color-wine-700);
+  --color-wine-600: var(--color-wine-600);
+  --color-wine-500: var(--color-wine-500);
+  --color-wine-400: var(--color-wine-400);
+
+  --color-gold-900: var(--color-gold-900);
+  --color-gold-800: var(--color-gold-800);
+  --color-gold-700: var(--color-gold-700);
+  --color-gold-600: var(--color-gold-600);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-300: var(--color-gold-300);
+  --color-gold-200: var(--color-gold-200);
+
+  --color-parchment-50: var(--color-parchment-50);
+  --color-parchment-100: var(--color-parchment-100);
+  --color-parchment-200: var(--color-parchment-200);
+  --color-parchment-300: var(--color-parchment-300);
+
+  --color-vine-900: var(--color-vine-900);
+  --color-vine-700: var(--color-vine-700);
+  --color-vine-600: var(--color-vine-600);
+  --color-vine-500: var(--color-vine-500);
+  --color-vine-400: var(--color-vine-400);
+
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-500: var(--color-ink-500);
+
+  --font-heading: var(--font-serif-ka), var(--font-serif-latin), Georgia, serif;
+  --font-body: var(--font-sans-ka), var(--font-sans-latin), system-ui, sans-serif;
+
+  --animate-fade-up: fade-up 0.8s ease-out forwards;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+}
+
+/* Scroll-triggered reveal utility used by <ScrollReveal>. */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-cue-bounce {
+  animation: scroll-bounce 2.2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .scroll-cue-bounce {
+    animation: none;
+  }
+}
+
+/*
+ * Hand-authored Georgian carpet-lattice texture.
+ * A restrained diamond/gul lattice rendered as a tiled SVG data-URI —
+ * not a stock photo or imported asset. Used at low opacity as a
+ * background texture via the .carpet-texture utility.
+ */
+.carpet-texture {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23862233' stroke-width='1'%3E%3Cpath d='M60 4 L116 60 L60 116 L4 60 Z'/%3E%3Cpath d='M60 24 L96 60 L60 96 L24 60 Z'/%3E%3Ccircle cx='60' cy='60' r='6'/%3E%3Cpath d='M60 4 L60 24 M60 96 L60 116 M4 60 L24 60 M96 60 L116 60'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 120px 120px;
+}
+
+.carpet-texture-gold {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c39c52' stroke-width='1'%3E%3Cpath d='M60 4 L116 60 L60 116 L4 60 Z'/%3E%3Cpath d='M60 24 L96 60 L60 96 L24 60 Z'/%3E%3Ccircle cx='60' cy='60' r='6'/%3E%3Cpath d='M60 4 L60 24 M60 96 L60 116 M4 60 L24 60 M96 60 L116 60'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 120px 120px;
+}

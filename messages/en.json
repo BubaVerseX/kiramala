@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "siteTitle": "Kiramala — A Riverside Georgian Restaurant",
+    "siteDescription": "Kiramala — a traditional Georgian supra on the riverbank. Main hall and private patskha, one shared menu."
+  },
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "venue": "Venue",
+    "contact": "Contact",
+    "languageLabel": "Language"
+  },
+  "common": {
+    "viewMenu": "View the menu",
+    "exploreVenue": "Explore the venue",
+    "callNow": "Call now",
+    "readMore": "Read more",
+    "placeholderImage": "Photo coming soon",
+    "placeholderLogo": "Logo — coming soon",
+    "gelShort": "GEL"
+  },
+  "footer": {
+    "tagline": "A table by the river, since 1998",
+    "rights": "© {year} Kiramala. All rights reserved.",
+    "phoneOnly": "Reservations by phone only."
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "On the riverbank",
+      "title": "Kiramala",
+      "tagline": "A supra by the riverside — wine, bread, and hospitality in the old Georgian tradition.",
+      "scrollCue": "Our story continues below"
+    },
+    "story": {
+      "eyebrow": "Our story",
+      "title": "Where we began",
+      "body": "Kiramala grew up on the riverbank as a place where the old rules of the Georgian supra are still kept — home-style cooking, wine pressed by hand, and a respect for guests passed down through generations. Here, a meal at the table isn't just dinner — it's a gathering.",
+      "cta": "More about us"
+    },
+    "patskha": {
+      "eyebrow": "For private gatherings",
+      "title": "The Patskha",
+      "body": "A patskha is a traditional Georgian structure — a round hut with wattle walls and a reed-thatched roof, used for centuries as a place to rest and receive guests. On our grounds, close to the river, we've kept that tradition alive: a small, quiet patskha where the very same menu served in our main hall is set for you, just in a more private circle.",
+      "cta": "Discover the patskha"
+    },
+    "navPrompts": {
+      "menu": {
+        "title": "Menu",
+        "body": "Khinkali, khachapuri, mtsvadi and a broad list of Georgian wines.",
+        "cta": "View the menu"
+      },
+      "venue": {
+        "title": "Venue",
+        "body": "A glass-walled hall with river views, open grounds, and a private patskha.",
+        "cta": "Explore the venue"
+      }
+    }
+  },
+  "menu": {
+    "title": "Menu",
+    "intro": "Our menu is built on the classics of Georgian cuisine — the same menu is served in both the main hall and the patskha.",
+    "categories": {
+      "starters": "Starters",
+      "khinkali": "Khinkali",
+      "khachapuri": "Khachapuri",
+      "mains": "Mains & Mtsvadi",
+      "sides": "Sides",
+      "salads": "Salads",
+      "desserts": "Desserts",
+      "wine": "Wine List"
+    },
+    "units": {
+      "perPiece": "piece"
+    },
+    "items": {
+      "badrijani": { "name": "Eggplant rolls with walnut paste", "description": "Fried eggplant rolled with spiced walnut paste, finished with pomegranate" },
+      "lobio": { "name": "Lobio in a clay pot", "description": "Slow-simmered kidney beans with spices, served bubbling with mchadi cornbread" },
+      "pkhali": { "name": "Pkhali trio", "description": "Spinach, beetroot and cabbage pâté with ground walnut" },
+      "matsoni": { "name": "House-made matsoni", "description": "Traditional Georgian yoghurt, made in-house daily" },
+      "jonjoli": { "name": "Pickled jonjoli with onion", "description": "Georgian bladdernut blossom, pickled and tossed with red onion" },
+      "khinkali-beef": { "name": "Beef & pork khinkali", "description": "Hand-pleated dumplings filled with juicy beef and pork" },
+      "khinkali-calf": { "name": "Veal khinkali", "description": "Tender veal filling seasoned with mountain herbs" },
+      "khinkali-cheese": { "name": "Cheese khinkali", "description": "Filled with melted Imeretian cheese" },
+      "khinkali-mushroom": { "name": "Mushroom khinkali", "description": "Forest mushroom filling with garden herbs" },
+      "khachapuri-adjaruli": { "name": "Adjaruli khachapuri", "description": "Boat-shaped bread filled with cheese, topped with a cracked egg and butter" },
+      "khachapuri-imeruli": { "name": "Imeruli khachapuri", "description": "Round bread filled with Imeretian cheese" },
+      "khachapuri-megruli": { "name": "Megruli khachapuri", "description": "Cheese both inside and baked on top" },
+      "khachapuri-guruli": { "name": "Guruli khachapuri", "description": "Folded pastry filled with cheese and boiled egg" },
+      "mtsvadi-pork": { "name": "Pork mtsvadi", "description": "Pork neck skewers grilled over vine-wood charcoal" },
+      "mtsvadi-beef": { "name": "Beef mtsvadi", "description": "Tender beef skewers, marinated and char-grilled" },
+      "mtsvadi-lamb": { "name": "Lamb mtsvadi", "description": "Young lamb skewers with mountain herbs" },
+      "chakhokhbili": { "name": "Chakhokhbili", "description": "Chicken braised with tomato, plum and fresh herbs" },
+      "chanakhi": { "name": "Chanakhi", "description": "Lamb and vegetables slow-baked in a clay pot" },
+      "ojakhuri": { "name": "Ojakhuri", "description": "Pork pan-fried with potatoes and onion, family-style" },
+      "mchadi": { "name": "Mchadi", "description": "Cornbread rounds, griddled to order" },
+      "lobiani": { "name": "Lobiani", "description": "Bread filled with spiced bean paste" },
+      "baked-potato-suluguni": { "name": "Baked potato with suluguni", "description": "Oven-baked potato finished with melted suluguni" },
+      "greens-plate": { "name": "Herb plate", "description": "A seasonal plate of fresh Georgian herbs" },
+      "georgian-salad": { "name": "Georgian salad", "description": "Tomato, cucumber and onion in a walnut dressing" },
+      "beet-walnut": { "name": "Beet & walnut salad", "description": "Boiled beetroot with walnut and coriander" },
+      "churchkhela": { "name": "Churchkhela", "description": "Walnuts dipped in thickened grape juice — a Georgian classic" },
+      "gozinaki": { "name": "Gozinaki", "description": "Walnut and honey brittle" },
+      "pelamushi": { "name": "Pelamushi", "description": "Grape must pudding thickened with cornflour" },
+      "nazuki": { "name": "Nazuki", "description": "Sunday sweet bread spiced with cinnamon and vanilla" }
+    },
+    "wine": {
+      "intro": "Georgian wines by region — each carrying the character of its own corner of the country.",
+      "qvevri": {
+        "title": "What is qvevri?",
+        "body": "A qvevri is a large clay vessel buried underground, where wine ferments on its skins for months using a traditional method recognised by UNESCO as intangible cultural heritage."
+      },
+      "qvevriBadge": "Qvevri",
+      "glass": "Glass",
+      "bottle": "Bottle",
+      "regions": {
+        "kakheti": {
+          "name": "Kakheti",
+          "description": "Georgia's largest wine region in the east, the homeland of qvevri winemaking",
+          "wines": {
+            "rkatsiteli-qvevri": { "name": "Rkatsiteli", "note": "Amber wine, made the traditional qvevri way" },
+            "saperavi": { "name": "Saperavi", "note": "A deep, full-bodied red" },
+            "mtsvane-qvevri": { "name": "Mtsvane", "note": "A delicate, aromatic qvevri white" }
+          }
+        },
+        "imereti": {
+          "name": "Imereti",
+          "description": "A western region known for lighter, easy-drinking wines",
+          "wines": {
+            "tsitska": { "name": "Tsitska", "note": "A light, crisp white" },
+            "otskhanuri-sapere-qvevri": { "name": "Otskhanuri Sapere", "note": "A tart, fruit-forward red, qvevri-made" }
+          }
+        },
+        "racha": {
+          "name": "Racha",
+          "description": "A mountain region famous for semi-sweet reds",
+          "wines": {
+            "khvanchkara": { "name": "Khvanchkara", "note": "A naturally semi-sweet red" },
+            "alexandreuli": { "name": "Alexandreuli", "note": "A fragrant red with soft tannins" }
+          }
+        },
+        "kartli": {
+          "name": "Kartli",
+          "description": "The region around Tbilisi, known for Chinuri",
+          "wines": {
+            "chinuri-qvevri": { "name": "Chinuri", "note": "A crisp, mineral qvevri white" }
+          }
+        }
+      }
+    }
+  },
+  "venue": {
+    "title": "Venue",
+    "intro": "Kiramala sits on the riverbank — three spaces, one table.",
+    "hall": {
+      "title": "Main Dining Hall",
+      "body": "A hall enclosed in glass, with river views from every table. High ceilings and natural light make it equally suited to a full supra or a small, quiet dinner."
+    },
+    "grounds": {
+      "title": "Grounds & Riverbank",
+      "body": "The grounds stretch from the building down to the water — a place to walk and unwind before or after the meal."
+    },
+    "patskha": {
+      "title": "The Patskha — Private Dining",
+      "body": "Deep in the grounds, close to the water, stands a traditional patskha — a round structure with wattle walls and a reed-thatched roof. It isn't a separate concept, just another room of Kiramala: the same menu is served here, in a quieter, more private setting suited to family gatherings or business dinners.",
+      "note": "The same menu as the main hall."
+    },
+    "gallery": {
+      "title": "Photo Gallery",
+      "hallLabel": "Main Hall",
+      "groundsLabel": "Grounds & Riverbank",
+      "patskhaLabel": "Patskha",
+      "placeholderCaption": "Photo coming soon"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "To reserve a table or the patskha, please call us.",
+    "phoneNote": "All reservations — for the hall and the patskha alike — are by phone only.",
+    "phoneLabel": "Phone",
+    "phone": "+995 32 219 04 04",
+    "addressLabel": "Address",
+    "address": "14 Riverside Embankment, Tbilisi",
+    "hoursLabel": "Opening Hours",
+    "hours": "Daily, 12:00–24:00",
+    "mapPlaceholder": "Map coming soon"
+  }
+}
