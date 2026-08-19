@@ -27,18 +27,19 @@ export function PlaceholderPhoto({
       type={onClick ? "button" : undefined}
       onClick={onClick}
       className={cn(
-        "carpet-texture group relative flex w-full items-center justify-center overflow-hidden rounded-xl border border-gold-500/25 bg-parchment-200 text-center",
+        "placeholder-wash group relative flex w-full items-center justify-center overflow-hidden rounded-xl border border-gold-500/25 text-center transition-shadow duration-300",
+        onClick &&
+          "cursor-zoom-in hover:border-gold-400/60 hover:shadow-[0_0_0_1px_rgba(195,156,82,0.35),0_12px_28px_-12px_rgba(42,10,17,0.45)] focus-visible:border-gold-400/60 focus-visible:shadow-[0_0_0_1px_rgba(195,156,82,0.35),0_12px_28px_-12px_rgba(42,10,17,0.45)] focus-visible:outline-none",
         aspect,
-        onClick && "cursor-zoom-in",
         className,
       )}
       aria-label={label ? `${label} — ${t("placeholderImage")}` : t("placeholderImage")}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-wine-950/25 via-transparent to-transparent" />
-      <div className="relative flex flex-col items-center gap-2 px-4">
+      <div className="absolute inset-0 bg-gradient-to-t from-wine-950/30 via-transparent to-transparent transition-opacity duration-300 group-hover:from-wine-950/15" />
+      <div className="relative flex flex-col items-center gap-2 px-4 transition-transform duration-300 group-hover:scale-105">
         <svg
           viewBox="0 0 24 24"
-          className="h-7 w-7 text-wine-700/60"
+          className="h-7 w-7 text-wine-700/60 transition-colors duration-300 group-hover:text-gold-600"
           fill="none"
           stroke="currentColor"
           strokeWidth={1.4}

@@ -53,7 +53,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-wine-900/15 text-wine-800 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-wine-900/15 text-wine-800 md:hidden"
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
           >
@@ -80,7 +80,7 @@ export function Header() {
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "rounded-md px-3 py-2.5 font-body text-base font-medium",
+                    "rounded-md px-3 py-3 font-body text-base font-medium",
                     active ? "bg-wine-700/10 text-wine-800" : "text-ink-700",
                   )}
                 >

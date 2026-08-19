@@ -17,7 +17,8 @@
     "readMore": "Подробнее",
     "placeholderImage": "Фото появится позже",
     "placeholderLogo": "Логотип — скоро",
-    "gelShort": "лари"
+    "gelShort": "лари",
+    "close": "Закрыть"
   },
   "footer": {
     "rights": "© {year} Кирамала. Все права защищены.",

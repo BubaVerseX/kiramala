@@ -28,13 +28,13 @@ export default async function MenuPage({
 
   return (
     <>
-      <section className="relative overflow-hidden bg-wine-950 py-16 text-center text-parchment-50 sm:py-20">
+      <section className="relative overflow-hidden bg-wine-950 py-20 text-center text-parchment-50 sm:py-24">
         <CarpetBackground variant="gold" scale="md" className="opacity-[0.15]" />
         <div className="relative mx-auto max-w-2xl px-6">
-          <h1 className="font-heading text-4xl font-medium sm:text-5xl">
+          <h1 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
             {t("title")}
           </h1>
-          <p className="mt-4 font-body text-parchment-100/85 sm:text-lg">
+          <p className="mt-5 font-body text-parchment-100/85 sm:text-lg">
             {t("intro")}
           </p>
         </div>
@@ -42,19 +42,19 @@ export default async function MenuPage({
 
       <div className="relative overflow-hidden">
         <CarpetBackground variant="wine" scale="sm" className="opacity-[0.06]" />
-        <div className="relative mx-auto max-w-5xl px-4 pt-6 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-5xl px-4 pt-10 sm:px-6 lg:px-8">
           <CategoryQuickNav />
 
           <div>
             {menuCategories.map((category, index) => (
               <div key={category.id}>
-                {index > 0 && <QvevriDivider className="py-2" />}
+                {index > 0 && <QvevriDivider className="py-10 sm:py-14" />}
                 <MenuCategorySection category={category} id={category.id} />
               </div>
             ))}
           </div>
 
-          <QvevriDivider className="py-2" />
+          <QvevriDivider className="py-10 sm:py-14" />
           <WineList id="wine" />
         </div>
       </div>

@@ -24,11 +24,13 @@ export default async function VenuePage({
 
   return (
     <>
-      <section className="relative overflow-hidden bg-wine-950 py-16 text-center text-parchment-50 sm:py-20">
+      <section className="relative overflow-hidden bg-wine-950 py-20 text-center text-parchment-50 sm:py-24">
         <CarpetBackground variant="gold" scale="md" className="opacity-[0.15]" />
         <div className="relative mx-auto max-w-2xl px-6">
-          <h1 className="font-heading text-4xl font-medium sm:text-5xl">{t("title")}</h1>
-          <p className="mt-4 font-body text-parchment-100/85 sm:text-lg">{t("intro")}</p>
+          <h1 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
+            {t("title")}
+          </h1>
+          <p className="mt-5 font-body text-parchment-100/85 sm:text-lg">{t("intro")}</p>
         </div>
       </section>
 

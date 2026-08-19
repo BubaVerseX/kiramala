@@ -24,7 +24,7 @@ function PromptCard({
       >
         <CarpetBackground variant="gold" scale="sm" className="opacity-[0.12]" />
         <div className="relative">
-          <h3 className="font-heading text-2xl font-medium text-gold-300 sm:text-3xl">
+          <h3 className="font-heading text-2xl font-semibold text-gold-300 sm:text-3xl">
             {title}
           </h3>
           <p className="mt-4 font-body text-sm leading-relaxed text-parchment-100/80 sm:text-base">
@@ -49,7 +49,7 @@ export function NavPrompts() {
   const t = useTranslations("home.navPrompts");
 
   return (
-    <section className="bg-parchment-50 pb-24 sm:pb-28">
+    <section className="bg-parchment-50 pb-28 sm:pb-32">
       <div className="mx-auto flex max-w-5xl flex-col gap-6 px-6 sm:flex-row">
         <PromptCard
           href="/menu"

@@ -17,7 +17,8 @@
     "readMore": "მეტის ნახვა",
     "placeholderImage": "ფოტო მალე დაემატება",
     "placeholderLogo": "ლოგო — მალე",
-    "gelShort": "₾"
+    "gelShort": "₾",
+    "close": "დახურვა"
   },
   "footer": {
     "rights": "ⓒ {year} ყირამალა. ყველა უფლება დაცულია.",

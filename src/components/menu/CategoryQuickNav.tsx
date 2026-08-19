@@ -16,7 +16,7 @@ export function CategoryQuickNav() {
           <li key={id}>
             <a
               href={`#${id}`}
-              className="inline-block rounded-full px-3.5 py-1.5 font-body text-sm whitespace-nowrap text-ink-700 transition-colors hover:bg-wine-700/10 hover:text-wine-800"
+              className="inline-block rounded-full px-4 py-2.5 font-body text-sm whitespace-nowrap text-ink-700 transition-colors hover:bg-wine-700/10 hover:text-wine-800"
             >
               {t(id)}
             </a>

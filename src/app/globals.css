@@ -105,11 +105,29 @@ body {
   font-family: var(--font-body);
 }
 
+/*
+ * Heading rhythm shared by every locale: tight, confident tracking at
+ * display sizes reads as more considered than the default wide-open
+ * letterform spacing. Georgian Mkhedruli carries deep descenders that
+ * Latin/Cyrillic don't, so it gets extra line-height and no negative
+ * tracking (the :lang(ka) override below) to keep multi-line headings
+ * from colliding rather than reading as elegantly spaced.
+ */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-heading);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+
+:lang(ka) h1,
+:lang(ka) h2,
+:lang(ka) h3,
+:lang(ka) h4 {
+  line-height: 1.5;
+  letter-spacing: 0;
 }
 
 /* Scroll-triggered reveal utility used by <ScrollReveal>. */
@@ -144,6 +162,35 @@ h4 {
   }
 }
 
+/* Lightbox open transition — a quiet fade/scale, not a snap-in. */
+@keyframes lightbox-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-backdrop {
+  animation: lightbox-fade-in 0.2s ease-out;
+}
+
+.lightbox-panel {
+  animation: lightbox-scale-in 0.25s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -161,6 +208,11 @@ h4 {
 
   .kantsi-fill-rect {
     transition: none;
+  }
+
+  .lightbox-backdrop,
+  .lightbox-panel {
+    animation: none;
   }
 }
 
@@ -215,4 +267,23 @@ h4 {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c39c52' stroke-width='1.6'%3E%3Cpath d='M60 4 L116 60 L60 116 L4 60 Z'/%3E%3Cpath d='M60 14 L106 60 L60 106 L14 60 Z'/%3E%3Cpath d='M60 24 L96 60 L60 96 L24 60 Z'/%3E%3Ccircle cx='60' cy='60' r='6'/%3E%3Cpath d='M60 4 L60 14 M60 106 L60 116 M4 60 L14 60 M106 60 L116 60'/%3E%3C/g%3E%3Cg fill='%23c39c52'%3E%3Ccircle cx='0' cy='0' r='2.6'/%3E%3Ccircle cx='120' cy='0' r='2.6'/%3E%3Ccircle cx='0' cy='120' r='2.6'/%3E%3Ccircle cx='120' cy='120' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 120px 120px;
+}
+
+/*
+ * Warm placeholder-photo treatment for imagery that hasn't been shot
+ * yet — a wine-to-gold duotone wash over the carpet lattice so these
+ * read as a deliberate brand surface rather than an empty "TODO" box.
+ * Used by <PlaceholderPhoto> and <MapPlaceholder>.
+ */
+.placeholder-wash {
+  background-color: var(--color-parchment-200);
+  background-image:
+    linear-gradient(
+      155deg,
+      rgba(134, 34, 51, 0.16) 0%,
+      rgba(195, 156, 82, 0.2) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c39c52' stroke-width='1.6'%3E%3Cpath d='M60 4 L116 60 L60 116 L4 60 Z'/%3E%3Cpath d='M60 14 L106 60 L60 106 L14 60 Z'/%3E%3Cpath d='M60 24 L96 60 L60 96 L24 60 Z'/%3E%3Ccircle cx='60' cy='60' r='6'/%3E%3Cpath d='M60 4 L60 14 M60 106 L60 116 M4 60 L14 60 M106 60 L116 60'/%3E%3C/g%3E%3Cg fill='%23c39c52'%3E%3Ccircle cx='0' cy='0' r='2.6'/%3E%3Ccircle cx='120' cy='0' r='2.6'/%3E%3Ccircle cx='0' cy='120' r='2.6'/%3E%3Ccircle cx='120' cy='120' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat, repeat;
+  background-size: cover, 96px 96px;
 }

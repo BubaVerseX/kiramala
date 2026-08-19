@@ -17,7 +17,8 @@
     "readMore": "Read more",
     "placeholderImage": "Photo coming soon",
     "placeholderLogo": "Logo — coming soon",
-    "gelShort": "GEL"
+    "gelShort": "GEL",
+    "close": "Close"
   },
   "footer": {
     "rights": "© {year} Kiramala. All rights reserved.",

@@ -59,7 +59,7 @@ export function LanguageSwitcher({
             aria-label={FULL_LABELS[code]}
             onClick={() => router.replace(pathname, { locale: code })}
             className={cn(
-              "rounded-full px-2.5 py-1 transition-colors",
+              "rounded-full px-3 py-2 transition-colors",
               active
                 ? tone === "wine"
                   ? "bg-wine-700 text-parchment-50"

@@ -18,8 +18,8 @@ export function MapPlaceholder() {
   const t = useTranslations("contact");
 
   return (
-    <div className="carpet-texture relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gold-500/25 bg-parchment-200 sm:aspect-square lg:aspect-[4/3]">
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-wine-950/5 px-6 text-center">
+    <div className="placeholder-wash relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-gold-500/25 sm:aspect-square lg:aspect-[4/3]">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-wine-950/10 px-6 text-center">
         <svg
           viewBox="0 0 24 24"
           className="h-8 w-8 text-wine-700/60"

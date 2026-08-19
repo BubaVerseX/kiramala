@@ -15,9 +15,9 @@ export function MenuCategorySection({
   const tCommon = useTranslations("common");
 
   return (
-    <ScrollReveal as="section" id={id} className="scroll-mt-24 py-14 first:pt-0">
+    <ScrollReveal as="section" id={id} className="scroll-mt-24 py-6 first:pt-0">
       <SectionHeading title={t(`categories.${category.id}`)} />
-      <ul className="mx-auto mt-10 grid max-w-3xl gap-x-10 gap-y-6 sm:grid-cols-2">
+      <ul className="mx-auto mt-10 grid max-w-3xl gap-x-10 gap-y-7 sm:grid-cols-2">
         {category.items.map((item) => (
           <li key={item.id} className="flex items-baseline justify-between gap-4">
             <div>

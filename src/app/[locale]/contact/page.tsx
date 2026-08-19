@@ -36,17 +36,19 @@ export default async function ContactPage({
 
   return (
     <>
-      <section className="relative overflow-hidden bg-wine-950 py-16 text-center text-parchment-50 sm:py-20">
+      <section className="relative overflow-hidden bg-wine-950 py-20 text-center text-parchment-50 sm:py-24">
         <CarpetBackground variant="gold" scale="md" className="opacity-[0.15]" />
         <div className="relative mx-auto max-w-2xl px-6">
-          <h1 className="font-heading text-4xl font-medium sm:text-5xl">{t("title")}</h1>
-          <p className="mt-4 font-body text-parchment-100/85 sm:text-lg">{t("intro")}</p>
+          <h1 className="font-heading text-5xl font-semibold tracking-tight sm:text-6xl">
+            {t("title")}
+          </h1>
+          <p className="mt-5 font-body text-parchment-100/85 sm:text-lg">{t("intro")}</p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
         {/* Prominent phone-only booking note — no reservation form exists anywhere on this site. */}
-        <div className="mx-auto mb-14 flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-gold-500/40 bg-gold-200/25 px-6 py-6 text-center sm:flex-row sm:text-left">
+        <div className="mx-auto mb-16 flex max-w-2xl flex-col items-center gap-3 rounded-2xl border border-gold-500/40 bg-gold-200/25 px-6 py-6 text-center sm:flex-row sm:text-left">
           <KantsiMotif className="h-9 w-9 shrink-0" />
           <p className="font-body text-base font-medium text-wine-900">{t("phoneNote")}</p>
         </div>

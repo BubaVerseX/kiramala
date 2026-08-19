@@ -9,8 +9,8 @@ export function Footer() {
 
   return (
     <footer className="border-t border-gold-500/20 bg-wine-950 text-parchment-100">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center gap-6 text-center">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+        <div className="flex flex-col items-center gap-7 text-center">
           <LogoFull className="h-24 sm:h-28" />
           <VineDivider tone="gold" className="opacity-70" />
 
