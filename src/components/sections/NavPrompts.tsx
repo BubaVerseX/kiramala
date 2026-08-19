@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { CarpetBackground } from "@/components/decorative/CarpetBackground";
 
 function PromptCard({
   href,
@@ -19,9 +20,10 @@ function PromptCard({
     <ScrollReveal delayMs={delayMs} className="flex-1">
       <Link
         href={href}
-        className="group flex h-full flex-col justify-between rounded-2xl border border-wine-900/10 bg-wine-950 p-8 text-parchment-50 transition-colors hover:border-gold-500/50 sm:p-10"
+        className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-wine-900/10 bg-wine-950 p-8 text-parchment-50 transition-colors hover:border-gold-500/50 sm:p-10"
       >
-        <div>
+        <CarpetBackground variant="gold" scale="sm" className="opacity-[0.12]" />
+        <div className="relative">
           <h3 className="font-heading text-2xl font-medium text-gold-300 sm:text-3xl">
             {title}
           </h3>
@@ -29,7 +31,7 @@ function PromptCard({
             {body}
           </p>
         </div>
-        <span className="mt-8 inline-flex items-center gap-2 font-body text-sm font-semibold tracking-wide text-gold-400 group-hover:text-gold-300">
+        <span className="relative mt-8 inline-flex items-center gap-2 font-body text-sm font-semibold tracking-wide text-gold-400 group-hover:text-gold-300">
           {cta}
           <span
             aria-hidden="true"

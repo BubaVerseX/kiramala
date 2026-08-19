@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { PlaceholderPhoto } from "@/components/venue/PlaceholderPhoto";
 import { VineDivider } from "@/components/decorative/VineDivider";
+import { CarpetBackground } from "@/components/decorative/CarpetBackground";
 import { cn } from "@/lib/cn";
 
 export function VenueSection({
@@ -28,13 +29,18 @@ export function VenueSection({
       as="section"
       id={id}
       className={cn(
-        "scroll-mt-24 py-16 sm:py-20",
+        "relative scroll-mt-24 overflow-hidden py-16 sm:py-20",
         tone === "dark" && "bg-wine-950 text-parchment-50",
       )}
     >
+      <CarpetBackground
+        variant={tone === "dark" ? "gold" : "wine"}
+        scale="sm"
+        className={tone === "dark" ? "opacity-[0.11]" : "opacity-[0.07]"}
+      />
       <div
         className={cn(
-          "mx-auto grid max-w-5xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2 md:gap-14 lg:px-8",
+          "relative mx-auto grid max-w-5xl items-center gap-10 px-4 sm:px-6 md:grid-cols-2 md:gap-14 lg:px-8",
           reverse && "md:[&>*:first-child]:order-2",
         )}
       >

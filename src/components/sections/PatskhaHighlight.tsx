@@ -13,15 +13,16 @@ export function PatskhaHighlight() {
 
   return (
     <section className="relative overflow-hidden bg-vine-900/5 py-24 sm:py-28">
-      <CarpetBackground variant="wine" />
+      <CarpetBackground variant="wine" scale="lg" className="opacity-[0.14]" />
       <ScrollReveal className="relative mx-auto max-w-5xl px-6">
-        <div className="grid items-center gap-10 rounded-2xl border border-gold-500/30 bg-parchment-50 p-8 shadow-[0_1px_0_0_rgba(0,0,0,0.02)] sm:p-12 md:grid-cols-[auto_1fr] md:gap-12">
-          <div className="flex justify-center md:justify-start">
+        <div className="relative grid items-center gap-10 overflow-hidden rounded-2xl border border-gold-500/30 bg-parchment-50 p-8 shadow-[0_1px_0_0_rgba(0,0,0,0.02)] sm:p-12 md:grid-cols-[auto_1fr] md:gap-12">
+          <CarpetBackground variant="wine" scale="sm" className="opacity-[0.05]" />
+          <div className="relative flex justify-center md:justify-start">
             <span className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-wine-700/10">
               <KantsiMotif className="h-11 w-11" />
             </span>
           </div>
-          <div>
+          <div className="relative">
             <span className="font-body text-xs font-semibold tracking-[0.35em] text-wine-600 uppercase">
               {t("eyebrow")}
             </span>

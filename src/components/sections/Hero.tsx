@@ -9,7 +9,7 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-[calc(100svh-4rem)] items-center justify-center overflow-hidden bg-wine-950 text-parchment-50 sm:min-h-[calc(100svh-5rem)]">
-      <CarpetBackground variant="gold" className="opacity-[0.08]" />
+      <CarpetBackground variant="gold" scale="lg" className="opacity-[0.16]" />
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-b from-wine-950 via-wine-900/95 to-wine-950"

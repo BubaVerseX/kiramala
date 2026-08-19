@@ -1,19 +1,17 @@
 #!/usr/bin/env node
 /**
- * Asset-pipeline step: turns the raw logo render (a gold-embossed
- * emblem + wordmark glowing out of a black canvas — not a clean flat
- * background) into transparent-background PNGs the site actually uses.
+ * Asset-pipeline step: turns the raw logo artwork (embossed gold on a
+ * textured cream/parchment card — not a flat matte) into transparent
+ * -background PNGs the site actually uses.
  *
- * Source has no flat matte to key against: the "background" is a soft
- * radial glow that fades to black across a wide radius, so a naive
- * near-black threshold leaves a smeared halo. Instead this:
- *   1. Keys alpha from per-pixel brightness with a fairly steep ramp,
- *      then "un-premultiplies" colour in the transition band so edges
- *      fade cleanly instead of muddying toward black.
- *   2. Confines the result to a tight ellipse (emblem) / rounded box
- *      (wordmark) fitted to the artwork, with a short feather — this
- *      is what turns the irregular glow footprint into a clean
- *      medallion silhouette instead of a blobby halo.
+ * The background is a fairly uniform cream tone with subtle paper
+ * grain, so pixels are keyed by how far their colour deviates from a
+ * sampled background reference (gold ink — both its bright highlight
+ * side and dark shadow/groove side — reads as a strong R-B channel
+ * split; the cream paper does not). Once alpha is known, colour is
+ * "un-blended" against the same background reference (the standard
+ * unpremultiply-against-known-background formula), so antialiased
+ * edges read as crisp gold rather than a muddy paper-tinted fringe.
  *
  * Re-run with: npm run process-logo
  * Source: assets/brand/kiramala-logo-source.png (not shipped to the client)
@@ -26,17 +24,19 @@ import path from "node:path";
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const SOURCE = path.join(root, "assets/brand/kiramala-logo-source.png");
 
-const LO = 75; // brightness floor: below this, fully transparent
-const HI = 140; // brightness ceiling: above this, fully opaque
-const UNPREMULT_EPS = 0.08;
-const UNPREMULT_CAP = 1.8;
+// Keying thresholds on the (R-B) "goldness" channel — measured from the
+// source: background patches top out around ~34, ink content starts
+// dominating past ~90, so the transition band sits cleanly between.
+const LO = 36;
+const HI = 85;
+// Reference background colour, sampled from the four corner patches.
+const BG = { r: 229.2, g: 219.7, b: 207.9 };
+const UNPREMULT_EPS = 0.06;
 
-// Ellipse bounding the circular emblem (arches / cypress / moon / grapes).
-const ELLIPSE = { cx: 796, cy: 315, rx: 380, ry: 322, feather: 8 };
-// Rounded box bounding the wordmark block (Georgian + "KIRAMALA").
-const WORD_BOX = { x0: 208, x1: 1337, y0: 615, y1: 1024, feather: 8 };
-// Vertical band over which the ellipse mask hands off to the word-box mask.
-const BLEND = { y0: 590, y1: 618 };
+// Crops (source is 1254x1254), found from the alpha mask's bounding box:
+// building + arc + waves only (no wordmark) vs. the full lockup.
+const EMBLEM_CROP = { left: 168, top: 118, width: 918, height: 610 };
+const LOCKUP_CROP = { left: 130, top: 118, width: 999, height: 945 };
 
 function smoothstep(e0, e1, x) {
   const t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0)));
@@ -49,49 +49,25 @@ async function keyLogo() {
   const { width, height, channels } = info;
   const out = Buffer.alloc(width * height * 4);
 
-  for (let y = 0; y < height; y++) {
-    for (let x = 0; x < width; x++) {
-      const i = (y * width + x) * channels;
-      const o = (y * width + x) * 4;
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
-      const maxc = Math.max(r, g, b);
+  for (let p = 0; p < width * height; p++) {
+    const i = p * channels;
+    const o = p * 4;
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
 
-      const t = Math.min(1, Math.max(0, (maxc - LO) / (HI - LO)));
-      const alpha = t * t * (3 - 2 * t);
+    const diff = r - b;
+    const alpha = smoothstep(LO, HI, diff);
+    const a = Math.max(alpha, UNPREMULT_EPS);
 
-      const scale =
-        alpha > UNPREMULT_EPS
-          ? Math.min(UNPREMULT_CAP, Math.max(1, 1 / Math.max(alpha, UNPREMULT_EPS)))
-          : 1;
+    const trueR = (r - (1 - alpha) * BG.r) / a;
+    const trueG = (g - (1 - alpha) * BG.g) / a;
+    const trueB = (b - (1 - alpha) * BG.b) / a;
 
-      // Ellipse mask (emblem)
-      const dx = (x - ELLIPSE.cx) / ELLIPSE.rx;
-      const dy = (y - ELLIPSE.cy) / ELLIPSE.ry;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const ellipseFactor = Math.min(ELLIPSE.rx, ELLIPSE.ry) / ELLIPSE.feather;
-      let ellipseMask = Math.min(1, Math.max(0, (1 - dist) * ellipseFactor));
-      ellipseMask = ellipseMask * ellipseMask * (3 - 2 * ellipseMask);
-
-      // Rounded-box mask (wordmark)
-      const fw = WORD_BOX.feather;
-      const left = smoothstep(WORD_BOX.x0 - fw, WORD_BOX.x0, x);
-      const right = 1 - smoothstep(WORD_BOX.x1, WORD_BOX.x1 + fw, x);
-      const top = smoothstep(WORD_BOX.y0 - fw, WORD_BOX.y0, y);
-      const bottom = 1 - smoothstep(WORD_BOX.y1, WORD_BOX.y1 + fw, y);
-      const rectMask = left * right * top * bottom;
-
-      const blend = smoothstep(BLEND.y0, BLEND.y1, y);
-      const effectiveMask = ellipseMask * (1 - blend) + rectMask * blend;
-
-      const finalAlpha = alpha * effectiveMask;
-
-      out[o] = Math.min(255, Math.round(r * scale));
-      out[o + 1] = Math.min(255, Math.round(g * scale));
-      out[o + 2] = Math.min(255, Math.round(b * scale));
-      out[o + 3] = Math.round(finalAlpha * 255);
-    }
+    out[o] = Math.min(255, Math.max(0, Math.round(trueR)));
+    out[o + 1] = Math.min(255, Math.max(0, Math.round(trueG)));
+    out[o + 2] = Math.min(255, Math.max(0, Math.round(trueB)));
+    out[o + 3] = Math.round(alpha * 255);
   }
 
   return { buffer: out, width, height };
@@ -104,28 +80,19 @@ async function main() {
   const publicLogoDir = path.join(root, "public/logo");
   const appDir = path.join(root, "src/app");
 
-  // Full lockup: emblem + Georgian wordmark + "KIRAMALA" subtext.
+  // Full lockup: building, arc, waves, Georgian wordmark, wave-divider, "KIRAMALA".
+  await keyed.clone().extract(LOCKUP_CROP).png().toFile(path.join(publicLogoDir, "lockup.png"));
+
+  // Icon-only crop: the building illustration alone, padded to a square canvas.
+  const side = Math.max(EMBLEM_CROP.width, EMBLEM_CROP.height);
   await keyed
     .clone()
-    .extract({ left: 208, top: 0, width: 1337 - 208, height })
-    .png()
-    .toFile(path.join(publicLogoDir, "lockup.png"));
-
-  // Icon-only crop: circular emblem alone, padded to a square canvas.
-  const emblemLeft = ELLIPSE.cx - ELLIPSE.rx - 10;
-  const emblemTop = 0;
-  const emblemWidth = (ELLIPSE.rx + 10) * 2;
-  const emblemHeight = ELLIPSE.cy + ELLIPSE.ry + 10;
-  const side = Math.max(emblemWidth, emblemHeight);
-
-  await keyed
-    .clone()
-    .extract({ left: emblemLeft, top: emblemTop, width: emblemWidth, height: emblemHeight })
+    .extract(EMBLEM_CROP)
     .extend({
-      top: Math.floor((side - emblemHeight) / 2),
-      bottom: Math.ceil((side - emblemHeight) / 2),
-      left: Math.floor((side - emblemWidth) / 2),
-      right: Math.ceil((side - emblemWidth) / 2),
+      top: Math.floor((side - EMBLEM_CROP.height) / 2),
+      bottom: Math.ceil((side - EMBLEM_CROP.height) / 2),
+      left: Math.floor((side - EMBLEM_CROP.width) / 2),
+      right: Math.ceil((side - EMBLEM_CROP.width) / 2),
       background: { r: 0, g: 0, b: 0, alpha: 0 },
     })
     .png()
@@ -133,8 +100,8 @@ async function main() {
 
   // Favicon / app icon: same emblem crop, scaled down for small-size clarity.
   // (Re-read the just-written square emblem.png from disk rather than
-  // chaining off the in-memory pipeline again, which was yielding a
-  // non-square resize output.)
+  // chaining off the in-memory pipeline again, which previously produced
+  // a non-square resize output when done in one pass.)
   await sharp(path.join(publicLogoDir, "emblem.png"))
     .resize(512, 512, { fit: "fill" })
     .png()

@@ -2,13 +2,15 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { VineDivider } from "@/components/decorative/VineDivider";
+import { CarpetBackground } from "@/components/decorative/CarpetBackground";
 
 export function StoryTeaser() {
   const t = useTranslations("home.story");
 
   return (
-    <section className="relative bg-parchment-50 py-24 sm:py-28">
-      <ScrollReveal className="mx-auto flex max-w-2xl flex-col items-center px-6 text-center">
+    <section className="relative overflow-hidden bg-parchment-50 py-24 sm:py-28">
+      <CarpetBackground variant="wine" scale="sm" className="opacity-[0.07]" />
+      <ScrollReveal className="relative mx-auto flex max-w-2xl flex-col items-center px-6 text-center">
         <span className="font-body text-xs font-semibold tracking-[0.35em] text-wine-600 uppercase">
           {t("eyebrow")}
         </span>

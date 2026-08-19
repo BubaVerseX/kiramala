@@ -22,7 +22,7 @@ export function WineList({ id }: { id?: string }) {
 
       {/* Qvevri / natural wine callout */}
       <div className="relative mx-auto mt-10 max-w-2xl overflow-hidden rounded-2xl border border-gold-500/40 bg-wine-950 px-6 py-7 text-parchment-50 sm:px-8">
-        <CarpetBackground variant="gold" className="opacity-[0.08]" />
+        <CarpetBackground variant="gold" scale="sm" className="opacity-[0.16]" />
         <div className="relative">
           <h3 className="font-heading text-xl text-gold-300">
             {t("wine.qvevri.title")}

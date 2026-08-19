@@ -6,6 +6,7 @@ import { galleryImages, type GalleryArea } from "@/lib/gallery-data";
 import { PlaceholderPhoto } from "@/components/venue/PlaceholderPhoto";
 import { SectionHeading } from "@/components/menu/SectionHeading";
 import { VineBorder } from "@/components/decorative/VineBorder";
+import { CarpetBackground } from "@/components/decorative/CarpetBackground";
 
 const AREAS: GalleryArea[] = ["hall", "grounds", "patskha"];
 
@@ -29,7 +30,9 @@ export function Gallery() {
   };
 
   return (
-    <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section className="relative overflow-hidden py-16 sm:py-20">
+      <CarpetBackground variant="wine" scale="sm" className="opacity-[0.07]" />
+      <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <SectionHeading title={t("title")} />
 
       <VineBorder tone="wine" className="mt-10 opacity-70" />
@@ -55,6 +58,7 @@ export function Gallery() {
       </div>
 
       <VineBorder tone="wine" className="mt-10 opacity-70" />
+      </div>
 
       {openId && (
         <div
