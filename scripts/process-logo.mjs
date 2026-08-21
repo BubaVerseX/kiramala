@@ -4,14 +4,17 @@
  * textured cream/parchment card — not a flat matte) into transparent
  * -background PNGs the site actually uses.
  *
- * The background is a fairly uniform cream tone with subtle paper
- * grain, so pixels are keyed by how far their colour deviates from a
- * sampled background reference (gold ink — both its bright highlight
- * side and dark shadow/groove side — reads as a strong R-B channel
- * split; the cream paper does not). Once alpha is known, colour is
- * "un-blended" against the same background reference (the standard
- * unpremultiply-against-known-background formula), so antialiased
- * edges read as crisp gold rather than a muddy paper-tinted fringe.
+ * The background carries a soft diagonal lighting gradient (brighter
+ * top-right, darker bottom-left) plus paper grain, so pixels are keyed
+ * by how far their colour deviates from a sampled background reference
+ * (gold ink — both its bright highlight side and dark shadow/groove
+ * side — reads as a strong R-B channel split; the cream paper does
+ * not, and that split stays stable across the lighting gradient since
+ * the gradient is roughly additive across R and B alike). Once alpha
+ * is known, colour is "un-blended" against the same background
+ * reference (the standard unpremultiply-against-known-background
+ * formula), so antialiased edges read as crisp gold rather than a
+ * muddy paper-tinted fringe.
  *
  * Re-run with: npm run process-logo
  * Source: assets/brand/kiramala-logo-source.png (not shipped to the client)
@@ -24,19 +27,28 @@ import path from "node:path";
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const SOURCE = path.join(root, "assets/brand/kiramala-logo-source.png");
 
-// Keying thresholds on the (R-B) "goldness" channel — measured from the
-// source: background patches top out around ~34, ink content starts
-// dominating past ~90, so the transition band sits cleanly between.
-const LO = 36;
-const HI = 85;
-// Reference background colour, sampled from the four corner patches.
-const BG = { r: 229.2, g: 219.7, b: 207.9 };
+// Keying thresholds on the (R-B) "goldness" channel — measured from a
+// full-image histogram of this source: the background peak spans
+// roughly 22-44 (with anti-aliased-edge noise trailing to ~48), and
+// ink content is clearly dominant past ~70, so the transition band
+// sits in the gap between the two.
+const LO = 38;
+const HI = 70;
+// Reference background colour, averaged over a grid of non-ink sample
+// points across the whole canvas (not just the four corners — this
+// source's background isn't flat enough for a corner-only sample).
+const BG = { r: 198.19, g: 182.24, b: 163.79 };
 const UNPREMULT_EPS = 0.06;
 
 // Crops (source is 1254x1254), found from the alpha mask's bounding box:
-// building + arc + waves only (no wordmark) vs. the full lockup.
-const EMBLEM_CROP = { left: 168, top: 118, width: 918, height: 610 };
-const LOCKUP_CROP = { left: 130, top: 118, width: 999, height: 945 };
+// full lockup (grapevine, wordmark, building, waves, wine glass, base
+// grape cluster) vs. the icon crop, which is deliberately narrower —
+// building + trees + water reflection + waves only. The grapevine,
+// wordmark and wine glass are excluded from the icon crop on purpose:
+// at icon/favicon sizes their fine detail turns to noise, while the
+// building silhouette alone still reads cleanly.
+const EMBLEM_CROP = { left: 270, top: 485, width: 775, height: 490 };
+const LOCKUP_CROP = { left: 100, top: 85, width: 1065, height: 1169 };
 
 function smoothstep(e0, e1, x) {
   const t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0)));
@@ -80,10 +92,12 @@ async function main() {
   const publicLogoDir = path.join(root, "public/logo");
   const appDir = path.join(root, "src/app");
 
-  // Full lockup: building, arc, waves, Georgian wordmark, wave-divider, "KIRAMALA".
+  // Full lockup: grapevine, Georgian wordmark + "KIRAMALA", building,
+  // waves, wine glass, base grape cluster.
   await keyed.clone().extract(LOCKUP_CROP).png().toFile(path.join(publicLogoDir, "lockup.png"));
 
-  // Icon-only crop: the building illustration alone, padded to a square canvas.
+  // Icon-only crop: the building illustration alone (no wordmark, vine,
+  // or wine glass — see EMBLEM_CROP comment above), padded to a square canvas.
   const side = Math.max(EMBLEM_CROP.width, EMBLEM_CROP.height);
   await keyed
     .clone()
