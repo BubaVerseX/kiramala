@@ -1,9 +1,11 @@
 /**
- * PLACEHOLDER MENU DATA
+ * MENU DATA
  * ------------------------------------------------------------------
  * Structured menu content: category order, item ids, and GEL prices.
- * These are realistic placeholder dishes/prices for a Georgian
- * restaurant — replace with the real menu when it's finalised.
+ *
+ * Prices are placeholders — reasonable estimates for a mid-to-upper
+ * range Georgian restaurant, NOT the final printed prices. Replace
+ * every priceGel value below with the real menu pricing once set.
  *
  * Item *names and descriptions* are NOT here — they live in
  * messages/{locale}.json under menu.items.<id>, keyed by the `id`
@@ -14,6 +16,7 @@
 
 export type MenuItemData = {
   id: string;
+  /** PLACEHOLDER price — to be replaced with real pricing. */
   priceGel: number;
   /** Optional unit hint resolved via menu.units.<unit> in messages, e.g. "perPiece". */
   unit?: string;
@@ -26,67 +29,109 @@ export type MenuCategoryData = {
 
 export const menuCategories: MenuCategoryData[] = [
   {
-    id: "starters",
+    id: "khachapuri",
     items: [
-      { id: "badrijani", priceGel: 16 },
-      { id: "lobio", priceGel: 14 },
-      { id: "pkhali", priceGel: 18 },
-      { id: "matsoni", priceGel: 9 },
-      { id: "jonjoli", priceGel: 12 },
+      { id: "khachapuri-imeruli", priceGel: 18 },
+      { id: "khachapuri-megruli", priceGel: 22 },
+      { id: "khachapuri-fenovani", priceGel: 20 },
+      { id: "khachapuri-acharuli", priceGel: 25 },
+      { id: "lobiani", priceGel: 16 },
+    ],
+  },
+  {
+    id: "bread",
+    items: [
+      { id: "pkhlovani", priceGel: 14 },
+      { id: "kubdari", priceGel: 18 },
+      { id: "shotis-puri", priceGel: 6 },
+      { id: "mchadi", priceGel: 6 },
+      { id: "chvishtari", priceGel: 9 },
     ],
   },
   {
     id: "khinkali",
     items: [
-      { id: "khinkali-beef", priceGel: 3.5, unit: "perPiece" },
-      { id: "khinkali-calf", priceGel: 4.5, unit: "perPiece" },
-      { id: "khinkali-cheese", priceGel: 3, unit: "perPiece" },
-      { id: "khinkali-mushroom", priceGel: 3.5, unit: "perPiece" },
-    ],
-  },
-  {
-    id: "khachapuri",
-    items: [
-      { id: "khachapuri-adjaruli", priceGel: 24 },
-      { id: "khachapuri-imeruli", priceGel: 19 },
-      { id: "khachapuri-megruli", priceGel: 22 },
-      { id: "khachapuri-guruli", priceGel: 14 },
+      { id: "khinkali-city", priceGel: 3.5, unit: "perPiece" },
+      { id: "khinkali-potato", priceGel: 3, unit: "perPiece" },
+      { id: "khinkali-beef", priceGel: 4, unit: "perPiece" },
     ],
   },
   {
     id: "mains",
     items: [
+      { id: "chakapuli", priceGel: 32 },
+      { id: "chashushuli", priceGel: 28 },
+      { id: "kharcho-mains", priceGel: 26 },
+      { id: "khashlama", priceGel: 30 },
       { id: "mtsvadi-pork", priceGel: 28 },
-      { id: "mtsvadi-beef", priceGel: 34 },
-      { id: "mtsvadi-lamb", priceGel: 36 },
-      { id: "chakhokhbili", priceGel: 26 },
-      { id: "chanakhi", priceGel: 32 },
-      { id: "ojakhuri", priceGel: 24 },
+      { id: "mtsvadi-chicken", priceGel: 24 },
+      { id: "kupati", priceGel: 22 },
+      { id: "apkhazura", priceGel: 24 },
+      { id: "ojakhuri", priceGel: 25 },
+      { id: "gochi", priceGel: 35 },
+      { id: "shkmeruli", priceGel: 27 },
+      { id: "satsivi", priceGel: 24 },
+      { id: "dedali-bazhe", priceGel: 26 },
+      { id: "tsitsila-tkemali", priceGel: 25 },
+      { id: "chakapuli-lamb", priceGel: 34 },
     ],
   },
   {
-    id: "sides",
+    id: "soups",
     items: [
-      { id: "mchadi", priceGel: 6 },
-      { id: "lobiani", priceGel: 12 },
-      { id: "baked-potato-suluguni", priceGel: 16 },
-      { id: "greens-plate", priceGel: 10 },
+      { id: "chikhirtma", priceGel: 12 },
+      { id: "kharcho-soup", priceGel: 13 },
+      { id: "khashi", priceGel: 15 },
     ],
   },
   {
     id: "salads",
     items: [
-      { id: "georgian-salad", priceGel: 14 },
-      { id: "beet-walnut", priceGel: 13 },
+      { id: "badrijani-nigvzit", priceGel: 16 },
+      { id: "pkhali-asorti", priceGel: 17 },
+      { id: "kitri-pomidvris-nigvzit", priceGel: 14 },
+      { id: "kitri-pomidvris", priceGel: 12 },
+      { id: "mchadis-asorti", priceGel: 13 },
+      { id: "bache", priceGel: 14 },
+      { id: "yvelis-asorti", priceGel: 18 },
     ],
   },
   {
-    id: "desserts",
+    id: "vegetables",
     items: [
-      { id: "churchkhela", priceGel: 8 },
-      { id: "gozinaki", priceGel: 12 },
-      { id: "pelamushi", priceGel: 9 },
-      { id: "nazuki", priceGel: 7 },
+      { id: "lobio-qotanshi", priceGel: 14 },
+      { id: "ajapsandali", priceGel: 16 },
+      { id: "soko-ketsze", priceGel: 18 },
+      { id: "soko-ketsze-sulgunit", priceGel: 20 },
+      { id: "qatami-ketsze", priceGel: 26 },
+      { id: "tolma", priceGel: 18 },
+      { id: "tolma-vazis-potolshi", priceGel: 20 },
+    ],
+  },
+  {
+    id: "sauces",
+    items: [
+      { id: "tkemali", priceGel: 4 },
+      { id: "ketchup", priceGel: 3 },
+      { id: "ajika", priceGel: 4 },
+      { id: "satsebeli", priceGel: 5 },
+    ],
+  },
+  {
+    id: "fish",
+    items: [
+      { id: "kalmakhi-grilze", priceGel: 32 },
+      { id: "loqo-ketsze", priceGel: 30 },
+      { id: "asatrina", priceGel: 42 },
+    ],
+  },
+  {
+    id: "other",
+    items: [
+      { id: "burger", priceGel: 24 },
+      { id: "fries", priceGel: 12 },
+      { id: "schnitzel", priceGel: 22 },
+      { id: "caesar-salad", priceGel: 19 },
     ],
   },
 ];

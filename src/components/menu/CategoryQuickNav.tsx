@@ -4,7 +4,7 @@ import { menuCategories } from "@/lib/menu-data";
 export function CategoryQuickNav() {
   const t = useTranslations("menu.categories");
 
-  const ids = [...menuCategories.map((c) => c.id), "wine"];
+  const ids = [...menuCategories.map((c) => c.id), "drinks", "wine"];
 
   return (
     <nav

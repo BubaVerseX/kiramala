@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import { menuCategories } from "@/lib/menu-data";
 import { MenuCategorySection } from "@/components/menu/MenuCategorySection";
+import { DrinksList } from "@/components/menu/DrinksList";
 import { WineList } from "@/components/menu/WineList";
 import { CategoryQuickNav } from "@/components/menu/CategoryQuickNav";
 import { CarpetBackground } from "@/components/decorative/CarpetBackground";
@@ -53,6 +54,9 @@ export default async function MenuPage({
               </div>
             ))}
           </div>
+
+          <QvevriDivider className="py-10 sm:py-14" />
+          <DrinksList id="drinks" />
 
           <QvevriDivider className="py-10 sm:py-14" />
           <WineList id="wine" />
